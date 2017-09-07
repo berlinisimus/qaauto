@@ -20,6 +20,7 @@ public class UserSignUpTest {
         driver =  Driver.initDriver();
         PageFactory.initElements(driver, SignUpPage.class);
         driver.get(SignUpPage.signUpPageURL);
+        
     }
 
     @Test
