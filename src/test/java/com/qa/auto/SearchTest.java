@@ -27,7 +27,7 @@ public class SearchTest {
 
     @Test
     public void verifySearchAsUnauthorizedUserWorks() {
-        //add check for checking presenct of sign in button
+        Assert.assertTrue(WebPage.signInBtn.isDisplayed());
         SearchPage.keyWordField.sendKeys("Persian");
         SearchPage.searchProductsBtn.click();
         Assert.assertEquals(SearchPage.ProductIdElem.getText(),SearchPage.ProuductIdStr);
@@ -38,9 +38,11 @@ public class SearchTest {
         driver.get(SignInPage.signInPageURL);
 
         SignInPage.userName.sendKeys(User.userName);
+        SignInPage.userPassword.clear();
         SignInPage.userPassword.sendKeys(User.userPass);
         SignInPage.submitLgnBtn.click();
 
+        Assert.assertTrue(WebPage.myAccountBtn.isDisplayed());
         SearchPage.keyWordField.sendKeys("Persian");
         SearchPage.searchProductsBtn.click();
         Assert.assertEquals(SearchPage.ProductIdElem.getText(),SearchPage.ProuductIdStr);
