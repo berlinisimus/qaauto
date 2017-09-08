@@ -37,7 +37,7 @@ public class SearchTest {
     public void verifySearchAsAuthorizedUserWorks() {
         driver.get(SignInPage.signInPageURL);
 
-        SignInPage.userName.sendKeys(User.userName);
+        SignInPage.userName.sendKeys(User.userID);
         SignInPage.userPassword.clear();
         SignInPage.userPassword.sendKeys(User.userPass);
         SignInPage.submitLgnBtn.click();

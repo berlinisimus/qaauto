@@ -20,4 +20,7 @@ public class WebPage {
 
     @FindBy(name = "username")
     public static WebElement userName;
+
+    @FindBy(xpath = "//*[@id=\"Catalog\"]/form/table[1]/tbody/tr[1]/td[2]")
+    public static WebElement userID;
 }

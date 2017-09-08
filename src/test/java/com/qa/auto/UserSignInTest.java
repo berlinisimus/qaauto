@@ -26,13 +26,15 @@ public class UserSignInTest {
 
     @Test
     public void verifyUserSignInWorks() {
-        SignInPage.userName.sendKeys(User.userName);
+        SignInPage.userName.sendKeys(User.userID);
         SignInPage.userPassword.clear();
         SignInPage.userPassword.sendKeys(User.userPass);
         SignInPage.submitLgnBtn.click();
+
+        Assert.assertTrue(WebPage.myAccountBtn.isDisplayed());
         WebPage.myAccountBtn.click();
+        Assert.assertEquals(WebPage.userID.getText(),User.userID);
         Assert.assertEquals(WebPage.userEmail.getAttribute("value"),User.userEmail);
-        //Assert.assertEquals(WebPage.userName.getAttribute("value"),User.userEmail);
     }
 
     @AfterClass

@@ -24,7 +24,7 @@ public class UserSignUpTest {
 
     @Test
     public void verifyUserSignUpWorks() {
-        SignUpPage.userID.sendKeys(User.userName);
+        SignUpPage.userID.sendKeys(User.userID);
         SignUpPage.userPassword.sendKeys(User.userPass);
         SignUpPage.userRepeatedPassword.sendKeys(User.userPass);
         SignUpPage.accountFirstName.sendKeys("alex");
