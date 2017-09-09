@@ -11,10 +11,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class Driver {
     private static WebDriver driver;
+    private static final String appIndexPageURL = "http://localhost:8080/jpetstore";
 
     public static WebDriver initDriver(){
         driver = new ChromeDriver();
-        driver.navigate().to("http://localhost:8080/jpetstore");
+        driver.navigate().to(appIndexPageURL);
 
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.titleIs("JPetStore Demo"));

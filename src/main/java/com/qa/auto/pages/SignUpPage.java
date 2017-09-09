@@ -1,5 +1,6 @@
 package com.qa.auto.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -47,4 +48,8 @@ public class SignUpPage extends WebPage {
 
     @FindBy(name = "account.country")
     public static WebElement accountCountry;
+
+    SignUpPage(WebDriver driver) {
+        super(driver);
+    }
 }

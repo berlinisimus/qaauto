@@ -2,8 +2,9 @@ package com.qa.auto;
 
 import com.qa.auto.data.User;
 import com.qa.auto.drivers.Driver;
+import com.qa.auto.pages.CatalogPage;
+import com.qa.auto.pages.MyAccountPage;
 import com.qa.auto.pages.SignInPage;
-import com.qa.auto.pages.WebPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -18,23 +19,23 @@ public class UserSignInTest {
     private static WebDriver driver;
 
     @BeforeClass
-    public void setUp() throws InterruptedException {
+    public void setUp(){
         driver =  Driver.initDriver();
-        PageFactory.initElements(driver,SignInPage.class);
         driver.get(SignInPage.signInPageURL);
     }
 
     @Test
     public void verifyUserSignInWorks() {
-        SignInPage.userName.sendKeys(User.userID);
-        SignInPage.userPassword.clear();
-        SignInPage.userPassword.sendKeys(User.userPass);
-        SignInPage.submitLgnBtn.click();
+        SignInPage signInPage =  new SignInPage(driver);
+        CatalogPage catalogPage = signInPage.loginAs(User.userID,User.userPass);
 
-        Assert.assertTrue(WebPage.myAccountBtn.isDisplayed());
-        WebPage.myAccountBtn.click();
-        Assert.assertEquals(WebPage.userID.getText(),User.userID);
-        Assert.assertEquals(WebPage.userEmail.getAttribute("value"),User.userEmail);
+        Assert.assertTrue(catalogPage.myAccountLink.isDisplayed());
+
+        catalogPage.selectMenuItem("My Account");
+        MyAccountPage myAccountPage = new MyAccountPage(driver);
+
+        Assert.assertEquals(myAccountPage.userID.getText(),User.userID);
+        Assert.assertEquals(myAccountPage.userEmail.getAttribute("value"),User.userEmail);
     }
 
     @AfterClass

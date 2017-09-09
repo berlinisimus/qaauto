@@ -1,5 +1,7 @@
 package com.qa.auto.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -8,19 +10,19 @@ import org.openqa.selenium.support.FindBy;
  * Created by alexey on 9/3/17.
  */
 public class WebPage {
+    private final WebDriver driver;
 
     @FindBy(linkText = "Sign In")
-    public static WebElement signInBtn;
+    public WebElement signInBtn;
 
     @FindBy(linkText = "My Account")
-    public static WebElement myAccountBtn;
+    public WebElement myAccountLink;
 
-    @FindBy(name = "account.email")
-    public static WebElement userEmail;
+    WebPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
-    @FindBy(name = "username")
-    public static WebElement userName;
-
-    @FindBy(xpath = "//*[@id=\"Catalog\"]/form/table[1]/tbody/tr[1]/td[2]")
-    public static WebElement userID;
+    public void selectMenuItem(String item) {
+        driver.findElement(By.linkText(item)).click();
+    }
 }
