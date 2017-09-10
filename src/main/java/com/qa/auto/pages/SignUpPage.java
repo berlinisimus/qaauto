@@ -1,55 +1,147 @@
 package com.qa.auto.pages;
 
+import com.qa.auto.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by alexey on 9/3/17.
  */
 public class SignUpPage extends WebPage {
     public static final String signUpPageURL = "http://localhost:8080/jpetstore/actions/Account.action?newAccountForm=";
+    private WebDriver driver;
 
     @FindBy(name = "username")
-    public static WebElement userID;
+    public WebElement userName;
 
     @FindBy(name = "newAccount")
-    public static WebElement submitSignUpBtn;
+    public WebElement submitSignUpBtn;
 
     @FindBy(name = "password")
-    public static WebElement userPassword;
+    public WebElement userPassword;
 
     @FindBy(name = "repeatedPassword")
-    public static WebElement userRepeatedPassword;
+    public WebElement userRepeatedPassword;
 
     @FindBy(name = "account.lastName")
-    public static WebElement accountLastName;
+    public WebElement accountLastName;
 
     @FindBy(name = "account.firstName")
-    public static WebElement accountFirstName;
+    public WebElement accountFirstName;
 
     @FindBy(name = "account.email")
-    public static WebElement accountEmail;
+    public WebElement accountEmail;
 
     @FindBy(name = "account.phone")
-    public static WebElement accountPhone;
+    public WebElement accountPhone;
 
     @FindBy(name = "account.address1")
-    public static WebElement accountAddress1;
+    public WebElement accountAddress1;
 
     @FindBy(name = "account.city")
-    public static WebElement accountCity;
+    public WebElement accountCity;
 
     @FindBy(name = "account.state")
-    public static WebElement accountState;
+    public WebElement accountState;
 
     @FindBy(name = "account.zip")
-    public static WebElement accountZip;
+    public WebElement accountZip;
 
     @FindBy(name = "account.country")
-    public static WebElement accountCountry;
+    public WebElement accountCountry;
 
-    SignUpPage(WebDriver driver) {
+    public SignUpPage(WebDriver driver) {
         super(driver);
+        this.driver = driver;
+
+        if (!SignUpPage.signUpPageURL.equals(driver.getCurrentUrl())) {
+            // Alternatively, we could navigate to the login page, perhaps logging out first
+            throw new IllegalStateException("This is not the sign up page");
+        }
+
+        PageFactory.initElements(driver, this);
+    }
+
+    public CatalogPage signUpNewUser() {
+        typeUserName(User.userID);
+        typeUserPassword(User.userPass);
+        typeUserRepeatPassword(User.userPass);
+        typeUserFirstName(User.userFirstName);
+        typeUserLastName(User.userLastName);
+        typeUserEmail(User.userEmail);
+        typeUserPhone(User.userPhoneNumb);
+        typeUserAddress1(User.userAddress1);
+        typeUserCity(User.userCity);
+        typeUserState(User.userState);
+        typeUserZip(User.userZip);
+        typeUserCountry(User.userCountry);
+        return submitSignUpAction();
+    }
+
+    private SignUpPage typeUserCountry(String userCountry) {
+        accountCountry.sendKeys(userCountry);
+        return this;
+    }
+
+    private SignUpPage typeUserZip(String userZip) {
+        accountZip.sendKeys(userZip);
+        return this;
+    }
+
+    private SignUpPage typeUserState(String userState) {
+        accountState.sendKeys(userState);
+        return this;
+    }
+
+    private SignUpPage typeUserCity(String userCity) {
+        accountCity.sendKeys(userCity);
+        return this;
+    }
+
+    private SignUpPage typeUserAddress1(String userAddress1) {
+        accountAddress1.sendKeys(userAddress1);
+        return this;
+    }
+
+    private SignUpPage typeUserPhone(String userPhoneNumb) {
+        accountPhone.sendKeys(userPhoneNumb);
+        return this;
+    }
+
+    private SignUpPage typeUserEmail(String userEmail) {
+        accountEmail.sendKeys(userEmail);
+        return this;
+    }
+
+    private SignUpPage typeUserLastName(String userLastName) {
+        accountLastName.sendKeys(userLastName);
+        return this;
+    }
+
+    private SignUpPage typeUserFirstName(String userFirstName) {
+        accountFirstName.sendKeys(userFirstName);
+        return this;
+    }
+
+    private SignUpPage typeUserRepeatPassword(String userPass) {
+        userRepeatedPassword.sendKeys(userPass);
+        return this;
+    }
+
+    private SignUpPage typeUserPassword(String userPass) {
+        userPassword.sendKeys(userPass);
+        return this;
+    }
+
+    private SignUpPage typeUserName(String userID) {
+        userName.sendKeys(userID);
+        return this;
+    }
+
+    private CatalogPage submitSignUpAction() {
+        submitSignUpBtn.click();
+        return new CatalogPage(driver);
     }
 }

@@ -2,11 +2,12 @@ package com.qa.auto;
 
 
 
-import com.qa.auto.data.User;
-import com.qa.auto.drivers.Driver;
+import com.qa.auto.pages.CatalogPage;
+import com.qa.auto.pages.SignInPage;
 import com.qa.auto.pages.SignUpPage;
+import com.qa.auto.pages.WelcomePage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -18,25 +19,18 @@ public class UserSignUpTest {
     @BeforeClass
     public void setUp() throws InterruptedException {
         driver =  Driver.initDriver();
-        PageFactory.initElements(driver, SignUpPage.class);
-        driver.get(SignUpPage.signUpPageURL);
     }
 
     @Test
     public void verifyUserSignUpWorks() {
-        SignUpPage.userID.sendKeys(User.userID);
-        SignUpPage.userPassword.sendKeys(User.userPass);
-        SignUpPage.userRepeatedPassword.sendKeys(User.userPass);
-        SignUpPage.accountFirstName.sendKeys("alex");
-        SignUpPage.accountLastName.sendKeys("alexey");
-        SignUpPage.accountEmail.sendKeys(User.userEmail);
-        SignUpPage.accountPhone.sendKeys("00000");
-        SignUpPage.accountAddress1.sendKeys("address");
-        SignUpPage.accountCity.sendKeys("lviv");
-        SignUpPage.accountState.sendKeys("-");
-        SignUpPage.accountZip.sendKeys("000");
-        SignUpPage.accountCountry.sendKeys("ukraine");
-        SignUpPage.submitSignUpBtn.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        CatalogPage catalogPage =  welcomePage.enterStore();
+        catalogPage.selectMenuItem("Sign In");
+
+        SignInPage signInPage = new SignInPage(driver);
+        SignUpPage signUpPage = signInPage.navigateSignUpPage();
+        signUpPage.signUpNewUser();
+        Assert.assertEquals(CatalogPage.catalogPageURL,driver.getCurrentUrl());
     }
 
     @AfterClass

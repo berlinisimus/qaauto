@@ -25,4 +25,5 @@ public class WebPage {
     public void selectMenuItem(String item) {
         driver.findElement(By.linkText(item)).click();
     }
+
 }

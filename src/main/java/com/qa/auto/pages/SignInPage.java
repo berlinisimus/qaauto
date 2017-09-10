@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class SignInPage extends WebPage{
     private final WebDriver driver;
-    public static final String signInPageURL = "http://localhost:8080/jpetstore/actions/Account.action?signonForm=";
+    private static final String SIGN_PAGE_URL_IDENTIFIER = "?signonForm=";
 
     @FindBy(name = "username")
     private WebElement userName;
@@ -21,11 +21,14 @@ public class SignInPage extends WebPage{
     @FindBy(name = "signon")
     private WebElement submitLgnBtn;
 
+    @FindBy(linkText = "Register Now!")
+    private WebElement registerNowLink;
+
     public SignInPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
 
-        if (!SignInPage.signInPageURL.equals(driver.getCurrentUrl())) {
+        if (!driver.getCurrentUrl().contains(SignInPage.SIGN_PAGE_URL_IDENTIFIER)) {
             // Alternatively, we could navigate to the login page, perhaps logging out first
             throw new IllegalStateException("This is not the login page");
         }
@@ -33,18 +36,18 @@ public class SignInPage extends WebPage{
         PageFactory.initElements(driver, this);
     }
 
-    public SignInPage typeUserName(String userID){
+    private SignInPage typeUserName(String userID){
         userName.sendKeys(userID);
         return this;
     }
 
-    public SignInPage typeUserPassword(String password){
+    private SignInPage typeUserPassword(String password){
         userPassword.clear();
         userPassword.sendKeys(password);
         return this;
     }
 
-    public CatalogPage submitLoginAction(){
+    private CatalogPage submitLoginAction(){
         submitLgnBtn.click();
         return new CatalogPage(driver);
     }
@@ -53,5 +56,10 @@ public class SignInPage extends WebPage{
         typeUserName(userID);
         typeUserPassword(password);
         return submitLoginAction();
+    }
+
+    public SignUpPage navigateSignUpPage() {
+        registerNowLink.click();
+        return new SignUpPage(driver);
     }
 }
