@@ -7,8 +7,8 @@ import org.openqa.selenium.support.PageFactory;
  * Created by alexey on 9/3/17.
  */
 public class CatalogPage extends WebPage{
-    private final WebDriver driver;
-    public static final String catalogPageURL = "http://localhost:8080/jpetstore/actions/Catalog.action";
+    private WebDriver driver = null;
+    public static final String catalogPageURL = "http://52.210.246.113:8080/jpetstore/actions/Catalog.action";
 
     public CatalogPage(WebDriver driver) {
         super(driver);

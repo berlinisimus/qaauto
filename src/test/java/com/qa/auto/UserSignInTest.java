@@ -1,6 +1,8 @@
 package com.qa.auto;
 
+import com.qa.auto.helpers.PropertyWorker;
 import com.qa.auto.pages.*;
+import com.qa.auto.wrapper_factories.BrowserFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -11,16 +13,18 @@ import org.testng.annotations.Test;
  * Created by alexey on 9/3/17.
  */
 public class UserSignInTest {
-    private static WebDriver driver;
+    private WebDriver driver = null;
 
     @BeforeClass
     public void setUp(){
-        driver =  Driver.initDriver();
+        driver =  BrowserFactory.initDriver("chrome");
     }
 
     @Test
     public void verifyUserSignInWorks() {
         WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.open(WelcomePage.APP_INDEX_PAGE_URL);
+
         CatalogPage catalogPage = welcomePage.enterStore();
         catalogPage.selectMenuItem("Sign In");
 
@@ -38,6 +42,6 @@ public class UserSignInTest {
 
     @AfterClass
     public void quitDriver(){
-        Driver.closeDriver();
+        BrowserFactory.closeDriver();
     }
 }

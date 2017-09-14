@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
  * Created by alexey on 9/7/17.
  */
 public class SearchPage extends WebPage {
-    private final WebDriver driver;
+    private WebDriver driver = null;
 
     @FindBy(name = "keyword")
     public static WebElement keyWordField;

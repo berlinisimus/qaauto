@@ -10,8 +10,8 @@ import org.openqa.selenium.support.PageFactory;
  * Created by alexey on 9/3/17.
  */
 public class SignUpPage extends WebPage {
-    public static final String signUpPageURL = "http://localhost:8080/jpetstore/actions/Account.action?newAccountForm=";
-    private WebDriver driver;
+    public static final String signUpPageURL = "http://52.210.246.113:8080/jpetstore/actions/Account.action?newAccountForm=";
+    private WebDriver driver = null;
 
     @FindBy(name = "username")
     public WebElement userName;

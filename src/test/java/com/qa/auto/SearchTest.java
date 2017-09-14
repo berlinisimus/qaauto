@@ -4,8 +4,8 @@ import com.qa.auto.pages.CatalogPage;
 import com.qa.auto.pages.SearchPage;
 import com.qa.auto.pages.SignInPage;
 import com.qa.auto.pages.WelcomePage;
+import com.qa.auto.wrapper_factories.BrowserFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -13,16 +13,18 @@ import org.testng.annotations.*;
  * Created by alexey on 9/7/17.
  */
 public class SearchTest {
-    private static WebDriver driver;
+    private WebDriver driver = null;
 
     @BeforeMethod
     public void setUp() throws InterruptedException {
-        driver =  Driver.initDriver();
+        driver = BrowserFactory.initDriver("chrome");
     }
 
     @Test
     public void verifySearchAsUnauthorizedUserWorks() {
         WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.open(WelcomePage.APP_INDEX_PAGE_URL);
+
         CatalogPage catalogPage =  welcomePage.enterStore();
 
         Assert.assertTrue(catalogPage.signInBtn.isDisplayed());
@@ -36,6 +38,7 @@ public class SearchTest {
     @Test
     public void verifySearchAsAuthorizedUserWorks() {
         WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.open(WelcomePage.APP_INDEX_PAGE_URL);
         CatalogPage catalogPage =  welcomePage.enterStore();
         catalogPage.selectMenuItem("Sign In");
 
@@ -51,6 +54,6 @@ public class SearchTest {
 
     @AfterMethod
     public void quitDriver(){
-        Driver.closeDriver();
+        BrowserFactory.closeDriver();
     }
 }

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
  * Created by alexey on 9/3/17.
  */
 public class WebPage {
-    private final WebDriver driver;
+    private WebDriver driver = null;
 
     @FindBy(linkText = "Sign In")
     public WebElement signInBtn;
@@ -24,6 +24,10 @@ public class WebPage {
 
     public void selectMenuItem(String item) {
         driver.findElement(By.linkText(item)).click();
+    }
+
+    public void open(String appIndexPageUrl) {
+        driver.get(appIndexPageUrl);
     }
 
 }

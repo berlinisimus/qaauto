@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
  * Created by alexey on 9/3/17.
  */
 public class SignInPage extends WebPage{
-    private final WebDriver driver;
+    private WebDriver driver = null;
     private static final String SIGN_PAGE_URL_IDENTIFIER = "?signonForm=";
 
     @FindBy(name = "username")

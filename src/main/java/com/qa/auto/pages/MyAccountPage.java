@@ -9,8 +9,8 @@ import org.openqa.selenium.support.PageFactory;
  * Created by alexey on 9/3/17.
  */
 public class MyAccountPage extends WebPage{
-    private final WebDriver driver;
-    public static final String MyAccountPageURL = "http://localhost:8080/jpetstore/actions/Account.action?editAccountForm=";
+    private WebDriver driver = null;
+    public static final String MyAccountPageURL = "http://52.210.246.113:8080/jpetstore/actions/Account.action?editAccountForm=";
 
     @FindBy(xpath = "//*[@id=\"Catalog\"]/form/table[1]/tbody/tr[1]/td[2]")
     public WebElement userID;

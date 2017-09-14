@@ -9,8 +9,8 @@ import org.openqa.selenium.support.PageFactory;
  * Created by alexey on 9/9/17.
  */
 public class WelcomePage extends WebPage {
-    private static final String welcomePageURL = "http://localhost:8080/jpetstore/";
-    private final WebDriver driver;
+    public static final String APP_INDEX_PAGE_URL = "http://52.210.246.113:8080/jpetstore/";
+    private WebDriver driver = null;
 
     @FindBy(linkText = "Enter the Store")
     private WebElement enterStoreLink;
@@ -18,12 +18,6 @@ public class WelcomePage extends WebPage {
     public WelcomePage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-
-        if (!WelcomePage.welcomePageURL.equals(driver.getCurrentUrl())) {
-            // Alternatively, we could navigate to the login page, perhaps logging out first
-            throw new IllegalStateException("This is not the welcome page");
-        }
-
         PageFactory.initElements(driver, this);
     }
 
