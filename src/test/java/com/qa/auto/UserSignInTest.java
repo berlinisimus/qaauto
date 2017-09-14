@@ -23,7 +23,7 @@ public class UserSignInTest {
     @Test
     public void verifyUserSignInWorks() {
         WelcomePage welcomePage = new WelcomePage(driver);
-        welcomePage.open(WelcomePage.APP_INDEX_PAGE_URL);
+        welcomePage.open(welcomePage.getPageUrl());
 
         CatalogPage catalogPage = welcomePage.enterStore();
         catalogPage.selectMenuItem("Sign In");

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class MyAccountPage extends WebPage{
     private WebDriver driver = null;
-    public static final String MyAccountPageURL = "http://52.210.246.113:8080/jpetstore/actions/Account.action?editAccountForm=";
+    private final String PAGE_URL = "http://52.210.246.113:8080/jpetstore/actions/Account.action?editAccountForm=";
 
     @FindBy(xpath = "//*[@id=\"Catalog\"]/form/table[1]/tbody/tr[1]/td[2]")
     public WebElement userID;
@@ -22,11 +22,15 @@ public class MyAccountPage extends WebPage{
         super(driver);
         this.driver = driver;
 
-        if (!MyAccountPage.MyAccountPageURL.equals(driver.getCurrentUrl())) {
+        if (!this.PAGE_URL.equals(driver.getCurrentUrl())) {
             // Alternatively, we could navigate to the login page, perhaps logging out first
             throw new IllegalStateException("This is not the my account page");
         }
 
         PageFactory.initElements(driver, this);
+    }
+
+    public String getPageUrl() {
+        return PAGE_URL;
     }
 }

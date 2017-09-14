@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
  * Created by alexey on 9/9/17.
  */
 public class WelcomePage extends WebPage {
-    public static final String APP_INDEX_PAGE_URL = "http://52.210.246.113:8080/jpetstore/";
+    private final String PAGE_URL = "http://52.210.246.113:8080/jpetstore/";
     private WebDriver driver = null;
 
     @FindBy(linkText = "Enter the Store")
@@ -25,4 +25,9 @@ public class WelcomePage extends WebPage {
         enterStoreLink.click();
         return new CatalogPage(driver);
     }
+
+    public String getPageUrl() {
+        return PAGE_URL;
+    }
+
 }

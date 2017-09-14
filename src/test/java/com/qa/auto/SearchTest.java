@@ -23,7 +23,7 @@ public class SearchTest {
     @Test
     public void verifySearchAsUnauthorizedUserWorks() {
         WelcomePage welcomePage = new WelcomePage(driver);
-        welcomePage.open(WelcomePage.APP_INDEX_PAGE_URL);
+        welcomePage.open(welcomePage.getPageUrl());
 
         CatalogPage catalogPage =  welcomePage.enterStore();
 
@@ -38,7 +38,7 @@ public class SearchTest {
     @Test
     public void verifySearchAsAuthorizedUserWorks() {
         WelcomePage welcomePage = new WelcomePage(driver);
-        welcomePage.open(WelcomePage.APP_INDEX_PAGE_URL);
+        welcomePage.open(welcomePage.getPageUrl());
         CatalogPage catalogPage =  welcomePage.enterStore();
         catalogPage.selectMenuItem("Sign In");
 

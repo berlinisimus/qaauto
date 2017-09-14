@@ -25,7 +25,7 @@ public class UserSignUpTest {
     @Test
     public void verifyUserSignUpWorks() {
         WelcomePage welcomePage = new WelcomePage(driver);
-        welcomePage.open(WelcomePage.APP_INDEX_PAGE_URL);
+        welcomePage.open(welcomePage.getPageUrl());
 
         CatalogPage catalogPage =  welcomePage.enterStore();
         catalogPage.selectMenuItem("Sign In");
@@ -33,7 +33,7 @@ public class UserSignUpTest {
         SignInPage signInPage = new SignInPage(driver);
         SignUpPage signUpPage = signInPage.navigateSignUpPage();
         signUpPage.signUpNewUser();
-        Assert.assertEquals(CatalogPage.catalogPageURL,driver.getCurrentUrl());
+        Assert.assertEquals(catalogPage.getPageUrl(),driver.getCurrentUrl());
     }
 
     @AfterClass

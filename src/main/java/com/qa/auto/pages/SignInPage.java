@@ -10,7 +10,8 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class SignInPage extends WebPage{
     private WebDriver driver = null;
-    private static final String SIGN_PAGE_URL_IDENTIFIER = "?signonForm=";
+    private final String SIGN_PAGE_URL_IDENTIFIER = "?signonForm=";
+    private final String PAGE_URL = "http://52.210.246.113:8080/jpetstore/actions/Account.action?signonForm=";
 
     @FindBy(name = "username")
     private WebElement userName;
@@ -28,7 +29,7 @@ public class SignInPage extends WebPage{
         super(driver);
         this.driver = driver;
 
-        if (!driver.getCurrentUrl().contains(SignInPage.SIGN_PAGE_URL_IDENTIFIER)) {
+        if (!driver.getCurrentUrl().contains(this.SIGN_PAGE_URL_IDENTIFIER)) {
             // Alternatively, we could navigate to the login page, perhaps logging out first
             throw new IllegalStateException("This is not the login page");
         }
@@ -61,5 +62,9 @@ public class SignInPage extends WebPage{
     public SignUpPage navigateSignUpPage() {
         registerNowLink.click();
         return new SignUpPage(driver);
+    }
+
+    public String getPageUrl() {
+        return PAGE_URL;
     }
 }

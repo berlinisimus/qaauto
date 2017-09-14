@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
  * Created by alexey on 9/3/17.
  */
 public class SignUpPage extends WebPage {
-    public static final String signUpPageURL = "http://52.210.246.113:8080/jpetstore/actions/Account.action?newAccountForm=";
+    public final String PAGE_URL = "http://52.210.246.113:8080/jpetstore/actions/Account.action?newAccountForm=";
     private WebDriver driver = null;
 
     @FindBy(name = "username")
@@ -56,7 +56,7 @@ public class SignUpPage extends WebPage {
         super(driver);
         this.driver = driver;
 
-        if (!SignUpPage.signUpPageURL.equals(driver.getCurrentUrl())) {
+        if (!this.PAGE_URL.equals(driver.getCurrentUrl())) {
             // Alternatively, we could navigate to the login page, perhaps logging out first
             throw new IllegalStateException("This is not the sign up page");
         }
@@ -143,5 +143,9 @@ public class SignUpPage extends WebPage {
     private CatalogPage submitSignUpAction() {
         submitSignUpBtn.click();
         return new CatalogPage(driver);
+    }
+
+    public String getPageUrl() {
+        return PAGE_URL;
     }
 }

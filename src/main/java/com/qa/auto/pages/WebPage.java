@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class WebPage {
     private WebDriver driver = null;
+    private static String PAGE_URL = null;
 
     @FindBy(linkText = "Sign In")
     public WebElement signInBtn;
@@ -26,8 +27,9 @@ public class WebPage {
         driver.findElement(By.linkText(item)).click();
     }
 
-    public void open(String appIndexPageUrl) {
-        driver.get(appIndexPageUrl);
+    public void open(String pageUrl) {
+        driver.get(pageUrl);
     }
+
 
 }
