@@ -18,13 +18,14 @@ public class UserSignInTest {
     @BeforeClass
     public void setUp(){
         String driverType = PropertyWorker.retrieveProperty();
-        driver =  BrowserFactory.initDriver("chrome");
+        driver =  BrowserFactory.initDriver(driverType);
     }
 
     @Test
     public void verifyUserSignInWorks() {
         WelcomePage welcomePage = new WelcomePage(driver);
         welcomePage.open(welcomePage.getPageUrl());
+
         CatalogPage catalogPage = welcomePage.enterStore();
         catalogPage.selectMenuItem("Sign In");
 

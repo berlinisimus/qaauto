@@ -33,8 +33,6 @@ public class SignInPage extends WebPage{
             // Alternatively, we could navigate to the login page, perhaps logging out first
             throw new IllegalStateException("This is not the login page");
         }
-
-        PageFactory.initElements(driver, this);
     }
 
     private SignInPage typeUserName(String userID){

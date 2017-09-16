@@ -21,7 +21,7 @@ public class UserSignUpTest {
     @BeforeClass
     public void setUp() throws InterruptedException {
         String driverType = PropertyWorker.retrieveProperty();
-        driver = BrowserFactory.initDriver("chrome");
+        driver = BrowserFactory.initDriver(driverType);
     }
 
     @Test

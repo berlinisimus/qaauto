@@ -10,49 +10,49 @@ import org.openqa.selenium.support.PageFactory;
  * Created by alexey on 9/3/17.
  */
 public class SignUpPage extends WebPage {
-    public final String PAGE_URL = "http://52.210.246.113:8080/jpetstore/actions/Account.action?newAccountForm=";
+    private final String PAGE_URL = "http://52.210.246.113:8080/jpetstore/actions/Account.action?newAccountForm=";
     private WebDriver driver = null;
 
     @FindBy(name = "username")
-    public WebElement userName;
+    private WebElement userName;
 
     @FindBy(name = "newAccount")
-    public WebElement submitSignUpBtn;
+    private WebElement submitSignUpBtn;
 
     @FindBy(name = "password")
-    public WebElement userPassword;
+    private WebElement userPassword;
 
     @FindBy(name = "repeatedPassword")
-    public WebElement userRepeatedPassword;
+    private WebElement userRepeatedPassword;
 
     @FindBy(name = "account.lastName")
-    public WebElement accountLastName;
+    private WebElement accountLastName;
 
     @FindBy(name = "account.firstName")
-    public WebElement accountFirstName;
+    private WebElement accountFirstName;
 
     @FindBy(name = "account.email")
-    public WebElement accountEmail;
+    private WebElement accountEmail;
 
     @FindBy(name = "account.phone")
-    public WebElement accountPhone;
+    private WebElement accountPhone;
 
     @FindBy(name = "account.address1")
-    public WebElement accountAddress1;
+    private WebElement accountAddress1;
 
     @FindBy(name = "account.city")
-    public WebElement accountCity;
+    private WebElement accountCity;
 
     @FindBy(name = "account.state")
-    public WebElement accountState;
+    private WebElement accountState;
 
     @FindBy(name = "account.zip")
-    public WebElement accountZip;
+    private WebElement accountZip;
 
     @FindBy(name = "account.country")
-    public WebElement accountCountry;
+    private WebElement accountCountry;
 
-    public SignUpPage(WebDriver driver) {
+    SignUpPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
 
@@ -61,7 +61,6 @@ public class SignUpPage extends WebPage {
             throw new IllegalStateException("This is not the sign up page");
         }
 
-        PageFactory.initElements(driver, this);
     }
 
     public CatalogPage signUpNewUser() {

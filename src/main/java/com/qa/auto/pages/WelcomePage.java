@@ -18,7 +18,6 @@ public class WelcomePage extends WebPage {
     public WelcomePage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
     @Override
@@ -30,7 +29,5 @@ public class WelcomePage extends WebPage {
         enterStoreLink.click();
         return new CatalogPage(driver);
     }
-
-
 
 }

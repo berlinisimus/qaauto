@@ -18,7 +18,6 @@ public class CatalogPage extends WebPage{
             // Alternatively, we could navigate to the login page, perhaps logging out first
             throw new IllegalStateException("This is not the catalog page");
         }
-        PageFactory.initElements(driver, this);
     }
 
     @Override

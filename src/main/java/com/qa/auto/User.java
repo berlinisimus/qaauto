@@ -4,7 +4,7 @@ package com.qa.auto;
  * Created by alexey on 9/3/17.
  */
 public class User {
-    public static final String userID = "123ы";
+    public static final String userID = "123dasdaa";
     public static final String userPass = "111111";
     public static final String userEmail = "test@mail.com";
     public static final String userFirstName = "test";

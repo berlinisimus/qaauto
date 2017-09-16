@@ -12,21 +12,19 @@ public class SearchPage extends WebPage {
     private WebDriver driver = null;
 
     @FindBy(name = "keyword")
-    public static WebElement keyWordField;
+    private WebElement keyWordField;
 
     @FindBy(name = "searchProducts")
-    public static WebElement searchProductsBtn;
+    private WebElement searchProductsBtn;
 
     @FindBy(xpath = "//*[@id=\"Catalog\"]/table/tbody/tr[2]/td[2]/b/a/font")
-    public static WebElement ProductIdElem;
+    public WebElement ProductIdElem;
 
-    public static String ProuductIdStr = "FL-DLH-02";
+    public String ProuductIdStr = "FL-DLH-02";
 
     public SearchPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-
-        PageFactory.initElements(driver, this);
     }
 
     @Override
