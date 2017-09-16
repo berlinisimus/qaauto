@@ -6,7 +6,7 @@ package com.qa.auto.helpers;
 public class PropertyWorker {
     private static String browserTypeProperty = null;
 
-    public static String retrieveProperty() {
+    public static String getProperty() {
         browserTypeProperty = System.getProperty("browser");
 
         if (browserTypeProperty != null) {

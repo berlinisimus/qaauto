@@ -18,8 +18,7 @@ public class SearchTest {
 
     @BeforeMethod
     public void setUp() throws InterruptedException {
-        String driverType = PropertyWorker.retrieveProperty();
-        driver = BrowserFactory.initDriver(driverType);
+        driver = BrowserFactory.initDriver();
     }
 
     @Test
