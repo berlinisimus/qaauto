@@ -29,6 +29,12 @@ public class SearchPage extends WebPage {
         PageFactory.initElements(driver, this);
     }
 
+    @Override
+    public String getPageUrl() {
+        return null;
+    }
+
+
     public SearchPage searchForProductName(String persian) {
         typeSearchQuery(persian);
         return submitSearchAction();
@@ -43,4 +49,6 @@ public class SearchPage extends WebPage {
         keyWordField.sendKeys(persian);
         return this;
     }
+
+
 }

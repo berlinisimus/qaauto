@@ -24,7 +24,6 @@ public class UserSignInTest {
     public void verifyUserSignInWorks() {
         WelcomePage welcomePage = new WelcomePage(driver);
         welcomePage.open(welcomePage.getPageUrl());
-
         CatalogPage catalogPage = welcomePage.enterStore();
         catalogPage.selectMenuItem("Sign In");
 

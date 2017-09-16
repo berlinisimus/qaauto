@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by alexey on 9/3/17.
  */
-public class WebPage {
+public abstract class WebPage {
     private WebDriver driver = null;
     private static String PAGE_URL = null;
 
@@ -31,5 +31,5 @@ public class WebPage {
         driver.get(pageUrl);
     }
 
-
+    public abstract String getPageUrl();
 }

@@ -21,13 +21,16 @@ public class WelcomePage extends WebPage {
         PageFactory.initElements(driver, this);
     }
 
+    @Override
+    public String getPageUrl() {
+        return PAGE_URL;
+    }
+
     public CatalogPage enterStore() {
         enterStoreLink.click();
         return new CatalogPage(driver);
     }
 
-    public String getPageUrl() {
-        return PAGE_URL;
-    }
+
 
 }

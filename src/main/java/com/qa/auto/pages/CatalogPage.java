@@ -21,8 +21,8 @@ public class CatalogPage extends WebPage{
         PageFactory.initElements(driver, this);
     }
 
+    @Override
     public String getPageUrl() {
-        return this.PAGE_URL;
+        return PAGE_URL;
     }
-
 }

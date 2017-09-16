@@ -30,6 +30,7 @@ public class MyAccountPage extends WebPage{
         PageFactory.initElements(driver, this);
     }
 
+    @Override
     public String getPageUrl() {
         return PAGE_URL;
     }

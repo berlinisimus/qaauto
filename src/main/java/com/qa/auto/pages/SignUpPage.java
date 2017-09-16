@@ -145,6 +145,7 @@ public class SignUpPage extends WebPage {
         return new CatalogPage(driver);
     }
 
+    @Override
     public String getPageUrl() {
         return PAGE_URL;
     }
