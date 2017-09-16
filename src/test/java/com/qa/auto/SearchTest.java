@@ -1,5 +1,6 @@
 package com.qa.auto;
 
+import com.qa.auto.helpers.PropertyWorker;
 import com.qa.auto.pages.CatalogPage;
 import com.qa.auto.pages.SearchPage;
 import com.qa.auto.pages.SignInPage;
@@ -17,7 +18,8 @@ public class SearchTest {
 
     @BeforeMethod
     public void setUp() throws InterruptedException {
-        driver = BrowserFactory.initDriver("chrome");
+        String driverType = PropertyWorker.retrieveProperty();
+        driver = BrowserFactory.initDriver(driverType);
     }
 
     @Test

@@ -23,9 +23,6 @@ public class BrowserFactory {
                 driver = new ChromeDriver();
                 break;
         }
-
-
-
         return driver;
     }
 

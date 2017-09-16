@@ -2,6 +2,7 @@ package com.qa.auto;
 
 
 
+import com.qa.auto.helpers.PropertyWorker;
 import com.qa.auto.pages.CatalogPage;
 import com.qa.auto.pages.SignInPage;
 import com.qa.auto.pages.SignUpPage;
@@ -19,6 +20,7 @@ public class UserSignUpTest {
 
     @BeforeClass
     public void setUp() throws InterruptedException {
+        String driverType = PropertyWorker.retrieveProperty();
         driver = BrowserFactory.initDriver("chrome");
     }
 

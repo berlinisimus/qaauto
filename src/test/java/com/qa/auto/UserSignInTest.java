@@ -17,6 +17,7 @@ public class UserSignInTest {
 
     @BeforeClass
     public void setUp(){
+        String driverType = PropertyWorker.retrieveProperty();
         driver =  BrowserFactory.initDriver("chrome");
     }
 
