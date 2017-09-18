@@ -17,7 +17,6 @@ public class SearchPage extends WebPage {
     @FindBy(name = "searchProducts")
     private WebElement searchProductsBtn;
 
-    //TODO check all locators and me private access to them via creating getters or 'verify' mehthods
     @FindBy(xpath = "//*[@id=\"Catalog\"]/table/tbody/tr[2]/td[2]/b/a/font")
     public WebElement ProductIdElem;
 
