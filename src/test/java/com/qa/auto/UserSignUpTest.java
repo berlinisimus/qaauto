@@ -1,7 +1,5 @@
 package com.qa.auto;
 
-
-
 import com.qa.auto.helpers.PropertyWorker;
 import com.qa.auto.pages.CatalogPage;
 import com.qa.auto.pages.SignInPage;
