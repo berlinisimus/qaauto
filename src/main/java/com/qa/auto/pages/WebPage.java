@@ -1,23 +1,37 @@
 package com.qa.auto.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 
 /**
  * Created by alexey on 9/3/17.
  */
-public class WebPage {
+public abstract class WebPage {
+    private WebDriver driver = null;
+    private static String PAGE_URL = null;
 
     @FindBy(linkText = "Sign In")
-    public static WebElement signInBtn;
+    public WebElement signInBtn;
 
     @FindBy(linkText = "My Account")
-    public static WebElement myAccountBtn;
+    public WebElement myAccountLink;
 
-    @FindBy(name = "account.email")
-    public static WebElement userEmail;
+    WebPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
-    @FindBy(name = "username")
-    public static WebElement userName;
+    public void selectMenuItem(String item) {
+        driver.findElement(By.linkText(item)).click();
+    }
+
+    public void open(String pageUrl) {
+        driver.get(pageUrl);
+    }
+
+    public abstract String getPageUrl();
 }

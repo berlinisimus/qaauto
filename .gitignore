@@ -8,6 +8,7 @@ target/
 qaauto.iml
 .DS_STORE
 
+
 # Log file
 *.log
 

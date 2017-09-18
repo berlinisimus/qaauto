@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Smoke" verbose="2">
+<test name="Smoke">
+    <classes>
+        <class name="com.qa.auto.UserSignUpTest" />
+    </classes>
+</test>
+</suite>

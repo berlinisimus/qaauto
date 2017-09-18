@@ -1,55 +1,61 @@
 package com.qa.auto;
 
-import com.qa.auto.data.User;
-import com.qa.auto.drivers.Driver;
 import com.qa.auto.pages.CatalogPage;
 import com.qa.auto.pages.SearchPage;
 import com.qa.auto.pages.SignInPage;
-import com.qa.auto.pages.WebPage;
+import com.qa.auto.pages.WelcomePage;
+import com.qa.auto.wrapper_factories.BrowserFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  * Created by alexey on 9/7/17.
  */
 public class SearchTest {
-    private static WebDriver driver;
+    private WebDriver driver = null;
 
     @BeforeMethod
-    public void setUp() throws InterruptedException {
-        driver =  Driver.initDriver();
-        PageFactory.initElements(driver,SearchPage.class);
-        PageFactory.initElements(driver,SignInPage.class);
-        driver.get(CatalogPage.CatalogPageURL);
+    public void setUp(){
+        driver = BrowserFactory.initDriver();
     }
 
     @Test
     public void verifySearchAsUnauthorizedUserWorks() {
-        Assert.assertTrue(WebPage.signInBtn.isDisplayed());
-        SearchPage.keyWordField.sendKeys("Persian");
-        SearchPage.searchProductsBtn.click();
-        Assert.assertEquals(SearchPage.ProductIdElem.getText(),SearchPage.ProuductIdStr);
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.open(welcomePage.getPageUrl());
+
+        CatalogPage catalogPage =  welcomePage.enterStore();
+
+        Assert.assertTrue(catalogPage.signInBtn.isDisplayed());
+
+        SearchPage searchPage = new SearchPage(driver);
+        searchPage.searchForProductName("Persian");
+
+        Assert.assertEquals(searchPage.ProductIdElem.getText(),searchPage.ProuductIdStr);
     }
 
     @Test
     public void verifySearchAsAuthorizedUserWorks() {
-        driver.get(SignInPage.signInPageURL);
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.open(welcomePage.getPageUrl());
+        CatalogPage catalogPage =  welcomePage.enterStore();
+        catalogPage.selectMenuItem("Sign In");
 
-        SignInPage.userName.sendKeys(User.userName);
-        SignInPage.userPassword.clear();
-        SignInPage.userPassword.sendKeys(User.userPass);
-        SignInPage.submitLgnBtn.click();
+        SignInPage signInPage = new SignInPage(driver);
+        catalogPage = signInPage.loginAs(User.userID,User.userPass);
 
-        Assert.assertTrue(WebPage.myAccountBtn.isDisplayed());
-        SearchPage.keyWordField.sendKeys("Persian");
-        SearchPage.searchProductsBtn.click();
-        Assert.assertEquals(SearchPage.ProductIdElem.getText(),SearchPage.ProuductIdStr);
+        Assert.assertTrue(catalogPage.myAccountLink.isDisplayed());
+
+        SearchPage searchPage = new SearchPage(driver);
+        searchPage.searchForProductName("Persian");
+        Assert.assertEquals(searchPage.ProductIdElem.getText(),searchPage.ProuductIdStr);
     }
 
     @AfterMethod
     public void quitDriver(){
-        Driver.closeDriver();
+        BrowserFactory.closeDriver();
     }
 }
