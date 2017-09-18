@@ -56,6 +56,7 @@ public class SignUpPage extends WebPage {
         super(driver);
         this.driver = driver;
 
+        //TODO move this to webPage where necessary
         if (!this.PAGE_URL.equals(driver.getCurrentUrl())) {
             // Alternatively, we could navigate to the login page, perhaps logging out first
             throw new IllegalStateException("This is not the sign up page");

@@ -1,6 +1,5 @@
 package com.qa.auto;
 
-import com.qa.auto.helpers.PropertyWorker;
 import com.qa.auto.pages.CatalogPage;
 import com.qa.auto.pages.SearchPage;
 import com.qa.auto.pages.SignInPage;
@@ -8,7 +7,9 @@ import com.qa.auto.pages.WelcomePage;
 import com.qa.auto.wrapper_factories.BrowserFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  * Created by alexey on 9/7/17.
@@ -17,7 +18,7 @@ public class SearchTest {
     private WebDriver driver = null;
 
     @BeforeMethod
-    public void setUp() throws InterruptedException {
+    public void setUp(){
         driver = BrowserFactory.initDriver();
     }
 
