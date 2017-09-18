@@ -11,6 +11,6 @@ public class PropertyWorker {
         if (browserTypeProperty != null) {
             return browserTypeProperty;
         }else
-            return browserTypeProperty ="chrome";
+            return "chrome";
     }
 }

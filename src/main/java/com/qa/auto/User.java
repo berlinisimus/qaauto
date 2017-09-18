@@ -5,7 +5,7 @@ package com.qa.auto;
  */
 public class User {
     //TODO create randomizer for userID
-    public static final String userID = "123dasdaa";
+    public static final String userID = "1891a";
     public static final String userPass = "111111";
     public static final String userEmail = "test@mail.com";
     public static final String userFirstName = "test";
