@@ -1,7 +1,6 @@
 # WebAutomationFramework
 
 
-
 - Install and launch
 
     1. Create new Maven project on your machine
