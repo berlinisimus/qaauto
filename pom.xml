@@ -9,7 +9,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <suiteXmlFile>sign-in.xml</suiteXmlFile>
+    <suiteXmlFile>grid.xml</suiteXmlFile>
   </properties>
 
   <build>

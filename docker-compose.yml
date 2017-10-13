@@ -18,5 +18,3 @@ tests:
   image: selenium/standalone-chrome
   links:
     - hub
-  volumes:
-    - /home/ubuntu/tests:/var/tmp

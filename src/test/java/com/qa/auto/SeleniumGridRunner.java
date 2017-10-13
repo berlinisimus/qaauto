@@ -31,12 +31,12 @@ public class SeleniumGridRunner {
             e.printStackTrace();
         }
         driver.get("https://google.com.ua");
-        //return driver;
+
     }
 
     @Test
     public void closeDriver(){
-//        if(driver != null)
-//            driver.quit();
+        if(driver != null)
+            driver.quit();
     }
 }
